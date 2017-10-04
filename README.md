@@ -2,12 +2,28 @@
 A web project for CSD 2550 course. Solitaire (Klondike) is a simple card game for one player.
 
 ## Menu
+* New game
+* Reset game
+* Highscore
+* Auth
 
 ## Auth
+In order to play the game, one has to login or register. User info is stored in
+local storage.
 
 ## Highscore
+Every time player starts a new game a timer triggers. The timer stops on game ends
+and the less time it took to finish the game, the better player gets to be placed
+on Highscore board.
+
+Highscore board is a simple table. Items are sorted by time and the records of
+a logged player are highlighted. Highscores are stored in local storage.
+
+Contains a comments section. Comments are stored in local storage as well.
+One can add a text a tags to his comment. It is posted with name of a logged user.
 
 ## Game generation
+
 
 ## Classes
 ### Stack
@@ -22,12 +38,12 @@ defines how many rereads of the deck are there left for a player. Default value
 equals *3* and every time you call `reread`, it decrements. Once it is 0,
 you can't reread anymore.
 
-* D[0]
+* **D[0]**
   * Maximum of 24 cards.
   * _Default_ is 24 cards.
   * When clicked, it pushes top card to register D[1].
   * `reread` If D[0] is empty and there are rereads available, it takes back all cards from D[1], reverses them and flips them.
-* D[1]
+* **D[1]**
   * Maximum of 24 cards.
   * _Default_ is 0 cards.
   * Draggable trait limited for one card only and out only.
