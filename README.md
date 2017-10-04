@@ -22,13 +22,36 @@ a logged player are highlighted. Highscores are stored in local storage.
 Contains a comments section. Comments are stored in local storage as well.
 One can add a text a tags to his comment. It is posted with name of a logged user.
 
-## Game generation
-
-
 ## Classes
 ### Stack
+A constructor takes an array of _card_ objects and an integer _max cards_.
+
+**Methods**
+* `pop`
+* `shift`
+* `bottom`
+  * Returns a reference to the last card in stack.
+* `top`
+  * Returns a reference to the first card in stack.
+* `reverse`
+* `push`
+  * Either an array of cards or one card object.
+* `reset`
+  * Deletes all current cards in stack. Optional argument is an array of cards to load onto the stack.
+* `cards`
 
 ### Card
+A constructor takes an integer _suit_, an integer _value_ and a boolean _hidden_.
+
+**Methods**
+* `color`
+  * Gets determined by suit.
+* `suit`
+* `val`
+  * Returns the value of a card in range _[_ **1** - **13** _]_.
+* `hide`
+* `reveal`
+* `isHidden`
 
 ## Registers
 
@@ -86,7 +109,7 @@ const canBePutOn = (cards, to) => {
     return true
   }
 
-  let top = to.cards.last()
+  let top = to.last()
 
   /**
    * Cards can be put on each other if they're of different color and
@@ -110,12 +133,15 @@ const canBeFlushed = (card, to) => {
     return true
   }
 
-  let top = to.cards.top()
+  let top = to.top()
 
   return (top.suit() === card.suit() && top.val() + 1 === card.val())
 }
 
 ```
+
+## Game generation
+
 
 ## Frameworks and libraries
 
