@@ -116,7 +116,7 @@ const canBePutOn = (cards, to) => {
    * the last card from the register is one higher than the first card from
    * the array of cards we are stacking on the register.
    */
-  return (top.color() !== cards[0].color() && top.val() -1 === cards[0].val())
+  return (top.color() !== cards[0].color() && top.val() - 1 === cards[0].val())
 }
 
 ```
@@ -141,10 +141,25 @@ const canBeFlushed = (card, to) => {
 ```
 
 ## Game generation
+1. `freshDeck` generates a deck containing **52** unique card objects.
+2. `dealCards` deals cards into registers.
+3. `startTimer` tracks the time it took player to finish the game.
 
+`freshDeck` pseudocode
+```javascript
+
+for (let val = 1; val < 14; val++) {
+  for(let suit in suits) {
+    cards.push(...)
+  }
+}
+
+```
 
 ## Frameworks and libraries
 
 [Vue.js](https://vuejs.org/)
 
 [Vue.Draggable](https://github.com/SortableJS/Vue.Draggable)
+
+[Lodash](https://lodash.com/)
