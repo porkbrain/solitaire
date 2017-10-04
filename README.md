@@ -1,6 +1,14 @@
 # Solitaire
 A web project for CSD 2550 course. Solitaire (Klondike) is a simple card game for one player.
 
+## Menu
+
+## Auth
+
+## Highscore
+
+## Game generation
+
 ## Classes
 ### Stack
 
@@ -16,18 +24,32 @@ you can't reread anymore.
 
 * D[0]
   * Maximum of 24 cards.
+  * _Default_ is 24 cards.
   * When clicked, it pushes top card to register D[1].
   * `reread` If D[0] is empty and there are rereads available, it takes back all cards from D[1], reverses them and flips them.
 * D[1]
   * Maximum of 24 cards.
+  * _Default_ is 0 cards.
   * Draggable trait limited for one card only and out only.
 
 ### Flush
 Flush registers extend `Stack::class`. The game ends when all 52 cards are
-stored in these registers.
+stored in these registers. Maximum number of cards per register is 13.
+_Default_ is 0 cards.
 
-There are 4 flush registers F[0,1,2.3]. They have Draggable trait and only one
+There are 4 flush registers **F[0,..,3]**. They have Draggable trait and only one
 card can be put at time. Validating function is `canBeFlushed`.
+
+### Pile
+Pile registers extend `Stack::class`. There are 7 Pile registers, **P[0,..,6]**.
+Maximum number of cards is 19. Has Draggable trait with validating function
+`canBePutOn`. All cards are hidden except top one, top card of register has
+always to be revealed.
+
+_Default_ number of cards = register's index + 1.
+
+If there is no hidden card in any Pile register and there is less than 3 cards
+in Deck registers, the games ends.
 
 ## Draggable
 Trait is visually provided by **Vue.Draggable**.
