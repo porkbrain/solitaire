@@ -7,6 +7,12 @@ A web project for CSD 2550 course. Solitaire (Klondike) is a simple card game fo
 * Highscore
 * Auth
 
+Page asks for confirmation upon clicking _New game_ or _Reset game_ for better usability.
+
+## PHP
+We use PHP to print out header and footer. There's also a hint request on the
+page that asks a PHP script for some help via AJAX.
+
 ## Auth
 In order to play the game, one has to login or register. User info is stored in
 local storage.
