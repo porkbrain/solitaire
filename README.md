@@ -5,6 +5,7 @@ A web project for CSD 2550 course. Solitaire (Klondike) is a simple card game fo
 * New game
 * Reset game
 * Highscore
+* Help
 * Auth
 
 Page asks for confirmation upon clicking _New game_ or _Reset game_ for better usability.
@@ -24,6 +25,9 @@ on Highscore board.
 
 Highscore board is a simple table. Items are sorted by time and the records of
 a logged player are highlighted. Highscores are stored in local storage.
+
+## Help
+This page includes information and brief history about Solitaire games and Klondike rules.
 
 Contains a comments section. Comments are stored in local storage as well.
 One can add a text a tags to his comment. It is posted with name of a logged user.
@@ -169,3 +173,7 @@ for (let val = 1; val < 14; val++) {
 [Vue.Draggable](https://github.com/SortableJS/Vue.Draggable)
 
 [Lodash](https://lodash.com/)
+
+[FontAwesome](http://fontawesome.io/)
+
+[Bootstrap CSS](https://getbootstrap.com/)
