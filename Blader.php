@@ -28,7 +28,7 @@ class Blader
    */
   public function component()
   {
-    $dir = scandir('./app/' . $this->component);
+    $dir = scandir('./app/Controllers/' . $this->component);
 
     // Removes relative paths.
     $files = array_filter($dir, function($file) {
@@ -36,7 +36,7 @@ class Blader
     });
 
     foreach ($files as $file) {
-      echo file_get_contents('./app/' . $this->component . '/' . $file);
+      echo file_get_contents('./app/Controllers/' . $this->component . '/' . $file);
     }
   }
 }

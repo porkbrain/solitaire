@@ -1,0 +1,24 @@
+.auth {
+  display: flex;
+  width: 100%;
+  text-align: center;
+
+  .line {
+    display: block;
+    width: 400px;
+    margin: 22px auto;
+
+    .note {
+      padding-left: 15px;
+    }
+  }
+
+  .login {
+    flex: 1;
+    border-right: 2px solid $link;
+  }
+
+  .register {
+    flex: 1;
+  }
+}

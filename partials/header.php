@@ -12,6 +12,6 @@
   </div>
 
   <div>
-    <a href="/login">login</a>
+    <a href="/auth">player</a>
   </div>
 </div>

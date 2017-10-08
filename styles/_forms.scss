@@ -1,0 +1,19 @@
+input, button {
+  outline: none;
+  border-radius: $radius;
+}
+
+input {
+  border: 1px solid $link;
+  padding: 10px;
+  color: $dark;
+  background-color: darken($light, 4);
+  width: 100%;
+}
+
+button {
+  padding: 12px 17px;
+  background-color: $dark;
+  color: $light;
+  font-size: 20px;
+}

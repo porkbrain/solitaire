@@ -2,6 +2,8 @@
 
 @import "_variables";
 
+@import "_forms";
+
 body {
   height: 100vh;
   width: 100%;
@@ -11,6 +13,18 @@ body {
   color: $dark;
   background-color: $light;
   user-select: none;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.danger {
+  color: $danger;
+}
+
+.bg-danger {
+  background-color: lighten($danger, 5);
 }
 
 /**
@@ -80,6 +94,10 @@ body {
     font-size: 14px;
     font-style: italic;
   }
+}
+
+#app {
+  width: 100%;
 }
 
 @import '_auth';

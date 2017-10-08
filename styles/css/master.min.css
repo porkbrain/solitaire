@@ -1,5 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Cairo:300,400,700);
+input, button { outline: none; border-radius: 10px; }
+
+input { border: 1px solid #3097d1; padding: 10px; color: #2c3e50; background-color: #c7dcfa; width: 100%; }
+
+button { padding: 12px 17px; background-color: #2c3e50; color: #dae8fc; font-size: 20px; }
+
 body { height: 100vh; width: 100%; display: flex; flex-wrap: wrap; font-family: Cairo, sans-serif; color: #2c3e50; background-color: #dae8fc; user-select: none; }
+
+.text-left { text-align: left; }
+
+.danger { color: #ff9789; }
+
+.bg-danger { background-color: #ffada3; }
 
 /** Navigation panel. */
 .nav { width: 100%; align-self: flex-start; margin-top: 8px; display: flex; }
@@ -22,3 +34,15 @@ body { height: 100vh; width: 100%; display: flex; flex-wrap: wrap; font-family: 
 .footer .github:hover { color: #3097d1; }
 
 .footer .copy { font-size: 14px; font-style: italic; }
+
+#app { width: 100%; }
+
+.auth { display: flex; width: 100%; text-align: center; }
+
+.auth .line { display: block; width: 400px; margin: 22px auto; }
+
+.auth .line .note { padding-left: 15px; }
+
+.auth .login { flex: 1; border-right: 2px solid #3097d1; }
+
+.auth .register { flex: 1; }

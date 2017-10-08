@@ -8,7 +8,7 @@ class Router
   private const ROUTES = [
     '/' => 'Solitaire',
     '/help' => 'Help',
-    '/login' => 'Auth',
+    '/auth' => 'Auth',
     '/scoreboard' => 'Scoreboard'
   ];
 

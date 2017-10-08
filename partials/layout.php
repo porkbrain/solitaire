@@ -28,6 +28,7 @@
     <!-- Including the Vue component. -->
     <?php $blade->component() ?>
 
+    <script src="/app/db.js"></script>
     <script src="/app/main.js"></script>
   </body>
 </html>
