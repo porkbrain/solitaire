@@ -1,7 +1,7 @@
 <template id="register-template">
-  <div class="register">
+  <div class="right">
     <h1>Register</h1>
-    <form v-on:submit.prevent="onSubmit">
+    <form @submit.prevent.self>
       <div class="line">
         <input type="text" placeholder="Your e-mail" v-model="email">
       </div>
@@ -30,7 +30,7 @@
         email: '',
         name: '',
         password: '',
-        
+
         confirm: '',
         error: ''
       }

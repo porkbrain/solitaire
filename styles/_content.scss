@@ -1,0 +1,57 @@
+#app {
+  width: 100%;
+  margin: 50px 0px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  text-align: center;
+
+  .line {
+    display: block;
+    width: 400px;
+    margin: 22px auto;
+
+    .note {
+      padding-left: 15px;
+    }
+  }
+
+  .left {
+    flex: 1;
+    border-right: 2px solid $link;
+  }
+
+  .right {
+    flex: 1;
+  }
+
+  .comment {
+    text-align: left;
+
+    .author {
+      font-weight: bold;
+    }
+
+    .tag {
+      background-color: $highlight;
+      padding: 3px;
+      border-radius: $radius;
+      margin: 0px 5px;
+      font-variant: small-caps;
+    }
+
+    i {
+      cursor: pointer;
+
+      &:hover {
+        color: $link;
+      }
+    }
+
+    div {
+      margin-top: 10px;
+    }
+  }
+}

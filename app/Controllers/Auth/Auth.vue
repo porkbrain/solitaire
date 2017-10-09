@@ -1,8 +1,8 @@
 <template id="auth-template">
-  <div class="auth">
+  <div class="content">
     <login v-if="! logged"></login>
     <register v-if="! logged"></register>
-    
+
     <profile v-bind:user="logged" v-if="logged"></profile>
   </div>
 </template>

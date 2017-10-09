@@ -1,13 +1,13 @@
 /**
  * General form elements styling.
  */
- 
-input, button {
+
+input, button, textarea {
   outline: none;
   border-radius: $radius;
 }
 
-input {
+input, textarea {
   border: 1px solid $link;
   padding: 10px;
   color: $dark;

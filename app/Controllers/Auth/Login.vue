@@ -1,7 +1,7 @@
 <template id="login-template">
-  <div class="login">
+  <div class="left">
     <h1>Login</h1>
-    <form v-on:submit.prevent="onSubmit">
+    <form @submit.prevent.self>
       <div class="line">
         <input type="text"
           placeholder="Your nick"
@@ -30,7 +30,7 @@
       return {
         name: '',
         password: '',
-        
+
         error: false
       }
     },

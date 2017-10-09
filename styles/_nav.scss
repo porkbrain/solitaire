@@ -1,0 +1,31 @@
+.nav {
+  width: 100%;
+  align-self: flex-start;
+  margin-top: 8px;
+  display: flex;
+
+  div {
+    flex: 1;
+
+    &:last-child {
+      text-align: right;
+      flex: 2;
+      justify-content: right;
+    }
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 26px;
+      padding: 8px 18px;
+      font-variant: small-caps;
+      opacity: .8;
+
+      &:hover {
+        opacity: 1;
+        background-color: $dark;
+        color: $light;
+      }
+    }
+  }
+}

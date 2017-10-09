@@ -21,93 +21,20 @@ body {
 .text-left {
   text-align: left;
 }
-
 .danger {
   color: $danger;
 }
-
 .bg-danger {
   background-color: lighten($danger, 5);
 }
 
 /**
- * Navigation panel.
- */
-.nav {
-  width: 100%;
-  align-self: flex-start;
-  margin-top: 8px;
-  display: flex;
-
-  div {
-    flex: 1;
-
-    &:last-child {
-      text-align: right;
-      flex: 2;
-      justify-content: right;
-    }
-
-    a {
-      text-decoration: none;
-      cursor: pointer;
-      font-size: 26px;
-      padding: 8px 18px;
-      font-variant: small-caps;
-      opacity: .8;
-
-      &:hover {
-        opacity: 1;
-        background-color: $dark;
-        color: $light;
-      }
-    }
-  }
-}
-
-/**
- * Footer block.
- */
-.footer {
-  align-self: flex-end;
-  width: 100%;
-  height: 15vh;
-  background-color: $dark;
-  color: $light-grey;
-  display: flex;
-
-  div {
-    height: 15vh;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    width: 150px;
-  }
-
-  .github {
-    color: $light-grey;
-
-    &:hover {
-      color: $link;
-    }
-  }
-
-  .copy {
-    font-size: 14px;
-    font-style: italic;
-  }
-}
-
-#app {
-  width: 100%;
-}
-
-/**
- * Importing subpage CSS files.
- *
  * All files are merged to one and minified for better performance, as in
  * HTTP 1.0 it's faster to load one larger file than multiple small one.
  * This is going to change with HTTP 2.0, but this application runs on 1.0.
  */
-@import '_auth';
+@import '_nav';
+
+@import '_content';
+
+@import '_footer';

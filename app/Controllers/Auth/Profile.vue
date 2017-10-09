@@ -1,5 +1,5 @@
 <template id="profile-template">
-  <div class="login">
+  <div class="left">
     <h2 v-text="user"></h2>
     <!-- TODO: Change password. -->
     <button @click="logout">Logout</button>

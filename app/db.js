@@ -34,6 +34,27 @@ class Model {
   }
 
   /**
+   * @param col Property name.
+   *
+   * @return <Integer> The highest value incremented by one.
+   */
+  next(col) {
+    let rows = this.sort(col, 'desc')
+
+    if (rows.length === 0) {
+      return 1
+    }
+
+    let value = rows[0][col]
+
+    if (Number.isInteger(value)) {
+      return value + 1
+    }
+
+    console.error('Value is not an integer!')
+  }
+
+  /**
    * Pointer is purpose free variable stored along with collection data.
    * It's used for storing logged player name or current game id.
    */
@@ -44,13 +65,13 @@ class Model {
   setPointer(value) {
     this.pointer = value
 
-    this.save()
+    return this.save()
   }
 
   clearPointer() {
     this.pointer = null
 
-    this.save()
+    return this.save()
   }
 
   /**
@@ -61,9 +82,28 @@ class Model {
   add(item) {
     this.data.push(item)
 
-    this.save()
+    return this.save()
+  }
 
-    return this;
+  /**
+   * @param item Any value.
+   *
+   * @return <Model> Instance of Model.
+   */
+  delete(where) {
+    const items = this.find(where)
+
+    for (var item in items) {
+      let index = this.data.findIndex((row) => {
+        return row.id === items[item].id
+      })
+
+      if (index !== -1) {
+        this.data.splice(index, 1)
+      }
+    }
+
+    return this.save()
   }
 
   /**
@@ -130,6 +170,8 @@ class Model {
       data: this.data,
       pointer: this.pointer
     }))
+
+    return this
   }
 }
 
