@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Scrapes URL and helps.
- */
 class Router
 {
   private const ROUTES = [

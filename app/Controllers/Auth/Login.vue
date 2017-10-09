@@ -1,23 +1,25 @@
 <template id="login-template">
   <div class="login">
     <h1>Login</h1>
-    <div class="line">
-      <input type="text"
-        placeholder="Your nick"
-        v-model="name"
-        v-bind:class="{ 'bg-danger': error }">
-    </div>
-    <div class="line">
-      <input type="password"
-        placeholder="Your password"
-        v-model="password"
-        v-bind:class="{ 'bg-danger': error }">
-    </div>
-    <div class="line text-left">
-      <button @click="login">Login</button>
-        <!-- TODO: Add a forgot your password email validation. -->
-      <a href="#" class="note">Forgot your password?</a>
-    </div>
+    <form v-on:submit.prevent="onSubmit">
+      <div class="line">
+        <input type="text"
+          placeholder="Your nick"
+          v-model="name"
+          v-bind:class="{ 'bg-danger': error }">
+      </div>
+      <div class="line">
+        <input type="password"
+          placeholder="Your password"
+          v-model="password"
+          v-bind:class="{ 'bg-danger': error }">
+      </div>
+      <div class="line text-left">
+        <button @click="login">Login</button>
+          <!-- TODO: Add a forgot your password email validation. -->
+        <a href="#" class="note">Forgot your password?</a>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -28,6 +30,7 @@
       return {
         name: '',
         password: '',
+        
         error: false
       }
     },

@@ -10,24 +10,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/css/master.min.css">
 
+    <!-- Loading external JS libraries. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js" charset="utf-8"></script>
     <script src="/lib/sortable.js" charset="utf-8"></script>
     <script src="/lib/draggable.js" charset="utf-8"></script>
   </head>
   <body>
-    <!-- Including the navigation based on loaded route. -->
-    <?php $blade->partial('header') ?>
+    <?php $this->partial('header') ?>
 
     <div id="app">
       <app></app>
     </div>
 
-    <!-- This looks better with a comment. -->
-    <?php $blade->partial('footer') ?>
+    <?php $this->partial('footer') ?>
 
-    <!-- Including the Vue component. -->
-    <?php $blade->component() ?>
+    <!-- Dynamically including the Vue component. -->
+    <?php $this->component() ?>
 
+    <!-- Main JS files are staticly included. -->
     <script src="/app/db.js"></script>
     <script src="/app/main.js"></script>
   </body>

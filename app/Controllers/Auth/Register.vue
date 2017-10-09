@@ -1,22 +1,24 @@
 <template id="register-template">
   <div class="register">
     <h1>Register</h1>
-    <div class="line">
-      <input type="text" placeholder="Your e-mail" v-model="email">
-    </div>
-    <div class="line">
-      <input type="text" placeholder="Your nick" v-model="name">
-    </div>
-    <div class="line">
-      <input type="password" placeholder="Your password" v-model="password">
-    </div>
-    <div class="line">
-      <input type="password" placeholder="Confirm password" v-model="confirm">
-    </div>
-    <div class="line text-left">
-      <button @click="register">Register</button>
-      <span class="note danger" v-text="error"></span>
-    </div>
+    <form v-on:submit.prevent="onSubmit">
+      <div class="line">
+        <input type="text" placeholder="Your e-mail" v-model="email">
+      </div>
+      <div class="line">
+        <input type="text" placeholder="Your nick" v-model="name">
+      </div>
+      <div class="line">
+        <input type="password" placeholder="Your password" v-model="password">
+      </div>
+      <div class="line">
+        <input type="password" placeholder="Confirm password" v-model="confirm">
+      </div>
+      <div class="line text-left">
+        <button @click="register">Register</button>
+        <span class="note danger" v-text="error"></span>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -28,12 +30,16 @@
         email: '',
         name: '',
         password: '',
+        
         confirm: '',
         error: ''
       }
     },
 
     methods: {
+      /**
+       * If the form data is valid, adds a user to collection and loggs him in.
+       */
       register() {
         if (this.validate() !== true) {
           return
@@ -49,6 +55,7 @@
 
         location.reload()
       },
+
       validate() {
         let regex = /[a-zA-Z1-9]+@[a-zA-Z]+\.[a-zA-Z]+/i
 

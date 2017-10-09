@@ -1,14 +1,14 @@
 <?php
 
 /**
- *  Provides dynamic HTML echoing.
+ *  Provides dynamic HTML echoing. Named after Laravel templating engine.
  */
 class Blader
 {
   private $component;
 
   /**
-   *  @param $component Name of Vue component.
+   * @param $component Name of Vue component.
    */
   function __construct($component)
   {
@@ -16,7 +16,15 @@ class Blader
   }
 
   /**
-   *  Prints file template in partials.
+   * Boots the main layout file and passes Blade instance to it.
+   */
+  public function boot()
+  {
+    require 'partials/layout.php';
+  }
+
+  /**
+   * Prints file template in partials.
    */
   public function partial($file)
   {
@@ -24,7 +32,7 @@ class Blader
   }
 
   /**
-   *  Includes all Vue route components.
+   * Includes all Vue route components.
    */
   public function component()
   {

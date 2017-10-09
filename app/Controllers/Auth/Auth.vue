@@ -2,6 +2,7 @@
   <div class="auth">
     <login v-if="! logged"></login>
     <register v-if="! logged"></register>
+    
     <profile v-bind:user="logged" v-if="logged"></profile>
   </div>
 </template>

@@ -15,6 +15,9 @@ body {
   user-select: none;
 }
 
+/**
+ * Universal helpers.
+ */
 .text-left {
   text-align: left;
 }
@@ -100,4 +103,11 @@ body {
   width: 100%;
 }
 
+/**
+ * Importing subpage CSS files.
+ *
+ * All files are merged to one and minified for better performance, as in
+ * HTTP 1.0 it's faster to load one larger file than multiple small one.
+ * This is going to change with HTTP 2.0, but this application runs on 1.0.
+ */
 @import '_auth';
