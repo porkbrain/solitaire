@@ -1,6 +1,7 @@
 <template id="comments-template">
   <div>
     <h2>Comments</h2>
+
     <form @submit.prevent.self v-show="logged">
       <div class="line">
         <textarea v-model="message" placeholder="Your message"></textarea>
@@ -24,6 +25,9 @@
       </div>
       <div v-text="comment.body"></div>
     </div>
+    <div v-if="comments.length === 0" class="empty-list">
+      There's nothing here yet :(
+    </div>
   </div>
 </template>
 
@@ -34,8 +38,9 @@
       return {
         message: '',
         tags: '',
-        logged: db.users.getPointer(),
         error: '',
+
+        logged: db.users.getPointer(),
         comments: db.comments.find(),
       }
     },

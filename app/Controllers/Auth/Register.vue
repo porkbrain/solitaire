@@ -1,6 +1,7 @@
 <template id="register-template">
   <div class="right">
     <h1>Register</h1>
+
     <form @submit.prevent.self>
       <div class="line">
         <input type="text" placeholder="Your e-mail" v-model="email">

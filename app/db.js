@@ -86,7 +86,7 @@ class Model {
   }
 
   /**
-   * @param item Any value.
+   * @param where Array of key: value pairs.
    *
    * @return <Model> Instance of Model.
    */

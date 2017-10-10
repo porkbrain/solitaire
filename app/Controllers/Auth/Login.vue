@@ -1,6 +1,7 @@
 <template id="login-template">
   <div class="left">
     <h1>Login</h1>
+
     <form @submit.prevent.self>
       <div class="line">
         <input type="text"

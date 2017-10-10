@@ -18,6 +18,21 @@
     }
   }
 
+  .table-line {
+    display: flex;
+    width: 400px;
+    margin: 22px auto;
+    padding: 8px;
+
+    span {
+      flex: 3;
+    }
+
+    .order {
+      flex: 1;
+    }
+  }
+
   .left {
     flex: 1;
     border-right: 2px solid $link;
@@ -53,5 +68,11 @@
     div {
       margin-top: 10px;
     }
+  }
+
+  .empty-list {
+    font-style: italic;
+    padding: 20px 0px;
+    color: grey;
   }
 }

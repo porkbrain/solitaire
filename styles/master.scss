@@ -27,6 +27,15 @@ body {
 .bg-danger {
   background-color: lighten($danger, 5);
 }
+.bg-highlight {
+  background-color: $highlight;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
 
 /**
  * All files are merged to one and minified for better performance, as in
