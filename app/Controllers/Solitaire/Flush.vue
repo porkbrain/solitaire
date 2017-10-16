@@ -1,7 +1,6 @@
 <template id="flush-template">
-  <div>
-    <div class="pile"
-      v-for="flush in flushes" v-on:click="move(flush)">
+  <div class="flush flex-row">
+    <div class="pile" v-for="flush in flushes" v-on:click="move(flush)">
       <card v-for="card in flush.cards"
         v-on:click.native="emit(flush, card)"
         v-bind:card="card"></card>

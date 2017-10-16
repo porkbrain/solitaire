@@ -2,6 +2,7 @@
 
 .game {
   width: 1600px;
+  height: 900px;
   margin: auto;
 
   .flex-row {
@@ -19,6 +20,7 @@
 
   .deck, .flush {
     .pile {
+      overflow: hidden;
       .card {
         display: none;
       }
@@ -31,6 +33,36 @@
     }
   }
 
+  .piles {
+    .pile {
+    }
+
+    .card {
+      max-height: 300px;
+      height: $card-header;
+      box-sizing: border-box;
+
+      .optional {
+        display: none;
+      }
+
+      &:first-child {
+        border-top-right-radius: $radius;
+        border-top-left-radius: $radius;
+      }
+
+      &:last-child {
+        height: 100%;
+        border-radius: 0px;
+        border-radius: $radius;
+
+        .optional {
+          display: block;
+        }
+      }
+    }
+  }
+
   .pile {
     flex: 1;
     border: 2px solid $link;
@@ -38,7 +70,6 @@
     box-sizing: border-box;
     margin: 5px 10px;
     height: 300px;
-    overflow: hidden;
   }
 
   .card {
@@ -52,6 +83,10 @@
     &.flipped {
       background-image: url("https://www.transparenttextures.com/patterns/argyle.png");
       background-color: $dark;
+
+      .flex-row {
+        display: none;
+      }
     }
 
     .flex-row {

@@ -24,7 +24,6 @@ CardValues = {
 Croupier = {
   init() {
     this.deck = this.fresh()
-    this.rereads = 2
   },
 
   fresh() {

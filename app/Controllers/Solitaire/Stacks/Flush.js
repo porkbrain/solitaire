@@ -1,35 +1,17 @@
 class Flush extends Stack {
-  standardize(card) {
-    if (_.isArray(card)) {
-      if (card.length !== 1) {
-        return false
-      }
+  validate(cards) {
+    cards = this.standardize(cards)
 
-      return card[0]
-    }
-
-    return card
-  }
-
-  validate(card) {
-    card = this.standardize(card)
-    
-    if (! card) {
+    if (cards.length !== 1) {
       return false
     }
 
     let top = this.top()
 
     if (top === undefined) {
-      return card.val === 1
+      return cards[0].val === 1
     }
 
-    return top.suit === card.suit && top.val + 1 === card.val
-  }
-
-  push(card) {
-    this.cards.push(this.standardize(card))
-
-    return true
+    return top.suit === cards[0].suit && top.val + 1 === cards[0].val
   }
 }

@@ -13,8 +13,4 @@ class Deck extends Stack {
 
     return this
   }
-
-  drawOne(card) {
-    this.cards.push(card)
-  }
 }

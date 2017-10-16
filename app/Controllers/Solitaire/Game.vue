@@ -1,13 +1,18 @@
 <template id="game-template">
   <div class="game">
     <div class="flex-row">
-      <deck class="deck flex-row"
+      <deck
         v-bind:active="active"
         v-on:clicked="push"></deck>
-      <flush class="flush flex-row"
+      <flush
         v-bind:active="active"
         v-on:clicked="push"
-        v-on:emptystack="push"></div>
+        v-on:emptystack="push"></flush>
+      </div>
+      <piles
+        v-bind:active="active"
+        v-on:clicked="push"
+        v-on:emptystack="push"></piles>
     </div>
   </div>
 </template>
@@ -35,6 +40,10 @@
         }
 
         stack.push(this.active.stack.pop(this.active.cards))
+
+        if (this.active.stack.top() !== undefined) {
+          this.active.stack.top().reveal()
+        }
 
         this.activate(null, [])
       },

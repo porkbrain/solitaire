@@ -1,5 +1,5 @@
 class Card {
-  constructor(val, suit, hidden = true) {
+  constructor(val, suit, hidden = false) {
     this.val = val
     this.suit = suit
     this.hidden = hidden

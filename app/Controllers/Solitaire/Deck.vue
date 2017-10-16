@@ -1,5 +1,5 @@
 <template id="deck-template">
-  <div>
+  <div class="deck flex-row">
     <div class="pile" @click="deal">
       <div v-if="! deck.empty()" class="card flipped"></div>
     </div>
@@ -19,23 +19,24 @@
     data() {
       return {
         deck: new Deck(Croupier.deal(24)),
-        revealed: new Deck()
+        revealed: new Deck(),
+        rereads: 3,
       }
     },
     methods: {
       deal() {
         if (this.deck.empty()) {
-          if (Croupier.rereads === 0) {
+          if (this.rereads === 0) {
             return
           }
 
           this.deck.setCards(this.revealed.reset())
-          return Croupier.rereads--
+          return this.rereads--
         }
 
         let card = this.deck.pop().reveal()
 
-        this.revealed.drawOne(card)
+        this.revealed.push(card)
       },
       emit(revealed, card) {
         this.$emit('clicked', revealed, card)
