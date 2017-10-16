@@ -4,23 +4,9 @@
       <div v-if="! deck.empty()" class="card flipped"></div>
     </div>
     <div class="pile">
-      <div v-for="card in revealed.cards"
-        class="card"
-        v-bind:class="{ red: card.color === 'red' }">
-        <div class="flex-row">
-          <div>{{ Suits[card.suit].icon }} {{ card.value() }}</div>
-          <div class="text-right">{{ Suits[card.suit].icon }} {{ card.value() }}</div>
-        </div>
-
-        <div class="flex-row big">
-            <div>{{ Suits[card.suit].icon }} {{ card.value() }}</div>
-        </div>
-
-        <div class="flex-row">
-          <div>{{ Suits[card.suit].icon }} {{ card.value() }}</div>
-          <div class="text-right">{{ Suits[card.suit].icon }} {{ card.value() }}</div>
-        </div>
-      </div>
+      <card v-for="card in revealed.cards"
+        v-on:click.native="emit(revealed, card)"
+        v-bind:card="card"></card>
     </div>
     <div class="pile" style="opacity: 0"></div>
   </div>
@@ -29,7 +15,7 @@
 <script type="text/javascript">
   Vue.component('deck', {
     template: '#deck-template',
-    props: ['cards'],
+    props: ['active'],
     data() {
       return {
         deck: new Deck(Croupier.deal(24)),
@@ -40,17 +26,19 @@
       deal() {
         if (this.deck.empty()) {
           if (Croupier.rereads === 0) {
-            return;
+            return
           }
-          
+
           this.deck.setCards(this.revealed.reset())
-          Croupier.rereads--
-          return;
+          return Croupier.rereads--
         }
 
         let card = this.deck.pop().reveal()
 
         this.revealed.drawOne(card)
+      },
+      emit(revealed, card) {
+        this.$emit('clicked', revealed, card)
       }
     }
   })

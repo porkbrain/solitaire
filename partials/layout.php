@@ -13,6 +13,31 @@
 
     <!-- Loading external JS libraries. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <script>
+    // move this shit pls
+      Suits = {
+       hearts: {
+         icon: '♥',
+         id: 0
+       },
+       diams: {
+         icon: '	♦',
+         id: 1
+       },
+       spades: {
+         icon: '♠',
+         id: 2
+       },
+       clubs: {
+         icon: '♣',
+         id: 3
+       }
+      }
+
+      CardValues = {
+       1: 'A', 11: 'J', 12: 'Q', 13: 'K'
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
     <script src="/lib/sortable.js" charset="utf-8"></script>
     <script src="/lib/draggable.js" charset="utf-8"></script>

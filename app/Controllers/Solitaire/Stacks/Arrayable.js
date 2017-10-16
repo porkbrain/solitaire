@@ -1,6 +1,6 @@
 class Stack {
-  constructor(cards) {
-    this.setCards(cards)
+  constructor() {
+    this.cards = []
   }
 
   reset(cards = []) {
@@ -23,7 +23,17 @@ class Stack {
     return this.cards.length === 0
   }
 
-  pop() {
-    return this.cards.pop()
+  pop(cards) {
+    if (! _.isArray(cards)) {
+      return this.cards.shift()
+    }
+
+    return this.cards.splice(this.cards.length - cards.length)
+  }
+
+  reverse() {
+    this.cards.reverse()
+
+    return this
   }
 }

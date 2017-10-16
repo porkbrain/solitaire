@@ -3,6 +3,7 @@ class Card {
     this.val = val
     this.suit = suit
     this.hidden = hidden
+    this.active = false
 
     if (Suits[suit].id <= 1) {
       this.color = 'red'
