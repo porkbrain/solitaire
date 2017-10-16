@@ -1,0 +1,3 @@
+class Pile extends Stack {
+
+}

@@ -1,0 +1,3 @@
+class Flush extends Stack {
+
+}

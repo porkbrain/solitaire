@@ -1,0 +1,75 @@
+@import "_variables";
+
+.game {
+  width: 1600px;
+  margin: auto;
+
+  .flex-row {
+    display: flex;
+    width: 100%;
+  }
+
+  .deck {
+    flex: 3;
+  }
+
+  .flush {
+    flex: 4;
+  }
+
+  .deck, .flush {
+    .pile {
+      .card {
+        display: none;
+      }
+
+      .card:last-child {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        &.flipped {
+          background-image: url("https://www.transparenttextures.com/patterns/argyle.png");
+          background-color: $dark;
+        }
+      }
+    }
+  }
+
+  .pile {
+    flex: 1;
+    border: 2px solid $link;
+    border-radius: $radius;
+    box-sizing: border-box;
+    margin: 5px 10px;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .card {
+    background-color: white;
+    cursor: pointer;
+
+    .flex-row {
+      flex: 1;
+      height: 33%;
+
+      &:last-child {
+        align-items: flex-end;
+      }
+
+      &.big {
+        text-align: center;
+        font-weight: bold;
+        font-size: 60px;
+        align-items: center;
+      }
+
+      div {
+        width: 100%;
+        padding: 10px;
+        font-size: 140%;
+      }
+    }
+  }
+}

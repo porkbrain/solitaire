@@ -21,6 +21,9 @@ body {
 .text-left {
   text-align: left;
 }
+.text-right {
+  text-align: right;
+}
 .danger {
   color: $danger;
 }
@@ -35,6 +38,12 @@ body {
 }
 .italic {
   font-style: italic;
+}
+.red {
+  color: red;
+}
+.black {
+  color: black;
 }
 
 /**

@@ -11,6 +11,8 @@ body { height: 100vh; width: 100%; display: flex; flex-wrap: wrap; font-family: 
 /** Universal helpers. */
 .text-left { text-align: left; }
 
+.text-right { text-align: right; }
+
 .danger { color: #ff9789; }
 
 .bg-danger { background-color: #ffada3; }
@@ -20,6 +22,10 @@ body { height: 100vh; width: 100%; display: flex; flex-wrap: wrap; font-family: 
 .bold { font-weight: bold; }
 
 .italic { font-style: italic; }
+
+.red { color: red; }
+
+.black { color: black; }
 
 /** All files are merged to one and minified for better performance, as in HTTP 1.0 it's faster to load one larger file than multiple small one. This is going to change with HTTP 2.0, but this application runs on 1.0. */
 .nav { width: 100%; align-self: flex-start; margin-top: 8px; display: flex; }

@@ -36,15 +36,35 @@ class Blader
    */
   public function component()
   {
-    $dir = scandir('./app/Controllers/' . $this->component);
+    $this->loadDir('./app/Controllers/' . $this->component);
+  }
 
-    // Removes relative paths.
-    $files = array_filter($dir, function($file) {
+  /**
+   * Echoes recursivelly all files in directory.
+   */
+  private function loadDir(String $path)
+  {
+    // Loads all files in directory and removes relative paths.
+    $files = array_filter(scandir($path), function($file) {
       return trim($file, '.') !== '';
     });
 
     foreach ($files as $file) {
-      echo file_get_contents('./app/Controllers/' . $this->component . '/' . $file);
+      // If the item is a directory, loads all files in it.
+      if (filetype($path . '/' . $file) == 'dir') {
+        $this->loadDir($path . '/' . $file);
+        continue;
+      }
+
+      $content = file_get_contents($path . '/' . $file);
+
+      // If the file is a plain Javascript, we have to embed it into script tag.
+      if (pathinfo($file)['extension'] == 'js') {
+        echo "<script>$content</script>";
+        continue;
+      }
+
+      echo $content;
     }
   }
 }
