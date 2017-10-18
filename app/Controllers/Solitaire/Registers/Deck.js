@@ -1,4 +1,4 @@
-class Deck extends Stack {
+class Deck extends Pack {
   constructor(cards = []) {
     super(cards)
     this.setCards(cards)

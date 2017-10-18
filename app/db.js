@@ -175,7 +175,7 @@ class Model {
   }
 }
 
-window.db = {
+const db = {
   /**
    * User colletion.
    *

@@ -13,7 +13,8 @@
     template: '#piles-template',
     data() {
       return {
-        piles: []
+        piles: [],
+        cardEvent: false
       }
     },
     mounted() {
@@ -27,9 +28,15 @@
     },
     methods: {
       emit(pile, card) {
+        this.cardEvent = true
+
         this.$emit('clicked', pile, card)
       },
       move(pile) {
+        if (this.cardEvent) {
+          return this.cardEvent = false
+        }
+
         this.$emit('emptystack', pile)
       }
     }

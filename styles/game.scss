@@ -1,9 +1,22 @@
 @import "_variables";
 
 .game {
+  overflow: auto;
   width: 1600px;
-  height: 900px;
+  height: 110vh;
   margin: auto;
+
+  .alert {
+    position: absolute;
+    width: 1600px;
+    height: 110vh;
+    text-align: center;
+    font-size: 25px;
+
+    p {
+      padding-top: 150px;
+    }
+  }
 
   .flex-row {
     display: flex;
@@ -19,6 +32,17 @@
   }
 
   .deck, .flush {
+    .info {
+      border: none;
+      font-variant: small-caps;
+      font-size: 130%;
+      text-align: center;
+
+      div {
+        padding-top: 50px;
+      }
+    }
+
     .pile {
       overflow: hidden;
       .card {
@@ -34,9 +58,6 @@
   }
 
   .piles {
-    .pile {
-    }
-
     .card {
       max-height: 300px;
       height: $card-header;
@@ -53,8 +74,8 @@
 
       &:last-child {
         height: 100%;
-        border-radius: 0px;
-        border-radius: $radius;
+        border-bottom-right-radius: $radius;
+        border-bottom-left-radius: $radius;
 
         .optional {
           display: block;

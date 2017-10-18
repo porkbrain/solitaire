@@ -1,10 +1,18 @@
-.game { width: 1600px; height: 900px; margin: auto; }
+.game { overflow: auto; width: 1600px; height: 110vh; margin: auto; }
+
+.game .alert { position: absolute; width: 1600px; height: 110vh; text-align: center; font-size: 25px; }
+
+.game .alert p { padding-top: 150px; }
 
 .game .flex-row { display: flex; width: 100%; }
 
 .game .deck { flex: 3; }
 
 .game .flush { flex: 4; }
+
+.game .deck .info, .game .flush .info { border: none; font-variant: small-caps; font-size: 130%; text-align: center; }
+
+.game .deck .info div, .game .flush .info div { padding-top: 50px; }
 
 .game .deck .pile, .game .flush .pile { overflow: hidden; }
 
@@ -18,7 +26,7 @@
 
 .game .piles .card:first-child { border-top-right-radius: 10px; border-top-left-radius: 10px; }
 
-.game .piles .card:last-child { height: 100%; border-radius: 0px; border-radius: 10px; }
+.game .piles .card:last-child { height: 100%; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
 
 .game .piles .card:last-child .optional { display: block; }
 

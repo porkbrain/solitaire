@@ -19,15 +19,33 @@
           new Flush(),
           new Flush(),
           new Flush()
-        ]
+        ],
+        cardEvent: false
       }
     },
     methods: {
       emit(flush, card) {
+        this.cardEvent = true
+        
         this.$emit('clicked', flush, card)
+
+        if (this.won()) {
+          this.$emit('won')
+        }
       },
+
       move(flush) {
+        if (this.cardEvent) {
+          return this.cardEvent = false
+        }
+
         this.$emit('emptystack', flush)
+      },
+
+      won() {
+        return this.flushes.reduce((cards, flush) => {
+          return cards + flush.cards.length
+        }, 0) === 52
       }
     }
   })
