@@ -9,7 +9,7 @@
         <a href="/scoreboard" class="alert-link">scoreboard</a>!
       </p>
     </div>
-    <div class="alert alert-danger" role="alert" v-show="! logged">
+    <div class="alert alert-danger" role="alert" v-show="! db.users.getPointer()">
       <p>
         You have to be logged in order to play <b>Solitare</b>.
       </p>
@@ -24,11 +24,6 @@
 <script type="text/javascript">
   Vue.component('alert', {
     template: '#alert-template',
-    props: ['won', 'score'],
-    data() {
-      return {
-        logged: db.users.getPointer()
-      }
-    }
+    props: ['won', 'score']    
   })
 </script>

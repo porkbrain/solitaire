@@ -1,6 +1,8 @@
 <template id="error-template">
-  <div>
-    error
+  <div class="content">
+    <div class="left">
+      <h1>Wups! This page does not exist :-(</h1>
+    </div>
   </div>
 </template>
 

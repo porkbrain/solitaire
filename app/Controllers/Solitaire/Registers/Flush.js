@@ -5,6 +5,14 @@
  */
 class Flush extends Pack {
   /**
+   * @param cards Array of Card objects.
+   */
+  constructor(cards = []) {
+    super(cards)
+    this.reset(cards)
+  }
+  
+  /**
    * @param card Card object that should be stacked onto Flush.
    *
    * @return Boolean true if a card can be pushed onto Flush.

@@ -6,12 +6,13 @@
 
     <div class="flex-row">
       <deck
-        v-bind:active="active"
+        v-bind:init="stacks.deck"
         v-bind:score="score"
+        v-on:newgame="newGame"
         v-on:clicked="push"></deck>
 
       <flush
-        v-bind:active="active"
+        v-bind:init="stacks.flushes"
         v-on:won="endGame"
         v-on:clicked="push"
         v-on:emptystack="push"></flush>
@@ -19,6 +20,7 @@
 
     <piles
       v-bind:active="active"
+      v-bind:init="stacks.piles"
       v-on:clicked="push"
       v-on:emptystack="push"></piles>
     </div>
@@ -33,18 +35,19 @@
         active: {stack: null, card: null},
         clicks : 0,
         time: 0,
-        won: false
+        won: false,
+        stacks: {}
       }
     },
 
     mounted() {
       let game = db.games.getPointer()
 
-      /*if (game === null) {
-        this.newGame()
-      } else {
-        this.loadGame(game)
-      }*/
+      if (game === null) {
+        return this.newGame()
+      }
+
+      this.init(game)
 
       this.interval = setInterval(() => {
         this.time++
@@ -52,8 +55,37 @@
     },
 
     methods: {
+      newGame() {
+        db.games.setPointer({
+          stacks: Croupier.deal(),
+          rereads: 3,
+          time: 0,
+          clicks: 0
+        })
+
+        return location.reload()
+      },
+
+      init(game) {
+        this.clicks = game.clicks
+        this.$children[1].rereads = game.rereads
+        this.time = game.time
+        
+        let parseStack = (stack) => {
+          return stack.map((card) => {
+            return new Card(card.val, card.suit, card.hidden)
+          })
+        }
+
+        this.stacks = {
+          piles: game.stacks.piles.map(parseStack),
+          flushes: game.stacks.flushes.map(parseStack),
+          deck: parseStack(game.stacks.deck)
+        }
+      },
+
       push(stack, card = null) {
-        // If no card is sent, then disactivate all cards.
+        // If card argument is empty then disactivate all cards.
         if (card === null && this.active.card === null) {
           return this.activate(null)
         }
@@ -78,6 +110,8 @@
         this.activate(null)
 
         this.clicks++
+
+        this.save()
       },
 
       /**
@@ -89,7 +123,7 @@
        * @param card  Particular Card object from stack that has been selected.
        */
       activate(stack, card = null) {
-        // Setting the texture.
+        // Setting the background texture.
         if (this.active.card !== null) {
           this.active.card.active = false
         }
@@ -109,7 +143,7 @@
         db.games.clearPointer()
 
         db.games.add({
-          player: db.user.getPointer(),
+          player: db.users.getPointer(),
           score: this.score
         })
 
@@ -119,7 +153,12 @@
       },
 
       save() {
-        console.log('saving ...')
+        db.games.setPointer({
+          stacks: Croupier.parse(this.$children),
+          rereads: _.clamp(this.$children[1].rereads - 1, 0, 3),
+          time: this.time,
+          clicks: this.clicks
+        })
       }
     },
 

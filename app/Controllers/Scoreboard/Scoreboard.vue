@@ -28,7 +28,7 @@
     },
     mounted() {
       this.games = db.games
-        .sort('score', 'desc', {finished: true})
+        .sort('score', 'desc')
         .slice(0, 10)
     }
   })

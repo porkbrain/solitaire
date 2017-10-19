@@ -18,11 +18,9 @@ class Pile extends Pack {
   init(cards) {
     this.cards = cards
 
-    this.cards.forEach((card) => {
-      card.hide()
-    })
-
-    this.top().reveal()
+    if (this.cards.length > 0) {
+      this.top().reveal()
+    }
 
     return this
   }

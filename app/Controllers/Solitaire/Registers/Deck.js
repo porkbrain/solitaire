@@ -1,16 +1,10 @@
 class Deck extends Pack {
   constructor(cards = []) {
     super(cards)
-    this.setCards(cards)
+    this.reset(cards)
   }
 
   validate(cards) {
     return false
-  }
-
-  setCards(cards) {
-    this.cards = cards
-
-    return this
   }
 }

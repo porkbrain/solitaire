@@ -11,22 +11,18 @@
 <script type="text/javascript">
   Vue.component('flush', {
     template: '#flush-template',
-    props: ['active'],
+    props: ['init'],
     data() {
       return {
-        flushes: [
-          new Flush(),
-          new Flush(),
-          new Flush(),
-          new Flush()
-        ],
+        flushes: [],
         cardEvent: false
       }
     },
+
     methods: {
       emit(flush, card) {
         this.cardEvent = true
-        
+
         this.$emit('clicked', flush, card)
 
         if (this.won()) {
@@ -46,6 +42,22 @@
         return this.flushes.reduce((cards, flush) => {
           return cards + flush.cards.length
         }, 0) === 52
+      }
+    },
+
+    watch: {
+      init() {
+        if (this.flushes.length > 0) {
+          return
+        }
+
+        let flushes = new Array(4)
+
+        for (let i = 0; i < 4; i++) {
+          flushes[i] = new Flush(this.init[i])
+        }
+
+        this.flushes = flushes
       }
     }
   })

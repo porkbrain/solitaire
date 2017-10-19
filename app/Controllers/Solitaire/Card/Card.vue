@@ -26,8 +26,7 @@
     template: '#card-template',
     /**
      * @prop card   Card object to render.
-     * @prop active Boolean if card should be marked as active.  
      */
-    props: ['card', 'active']
+    props: ['card']
   })
 </script>

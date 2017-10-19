@@ -11,29 +11,24 @@
     <div class="pile info">
       <div>redeals left:&nbsp;<b>{{ rereads }}</b></div>
       <div>score:&nbsp;<b>{{ score }}</b></div>
-      <div><button @click="newGame()">New game</button></div>
-      <!--
-      position
-      save game
-      loads game
-      new game
-      -->
-    </div>
+      <div><button @click="$emit('newgame')">New game</button></div>
   </div>
 </template>
 
 <script type="text/javascript">
   Vue.component('deck', {
     template: '#deck-template',
-    props: ['active', 'score'],
+    props: ['init', 'score'],
     data() {
       return {
-        deck: new Deck(Croupier.deal(24)),
+        deck: new Deck(),
         revealed: new Deck(),
         rereads: 3,
-        disable: false
+        disable: false,
+        loaded: false
       }
     },
+
     methods: {
       deal() {
         if (this.disable) {
@@ -45,7 +40,7 @@
             return
           }
 
-          this.deck.setCards(this.revealed.reset())
+          this.deck.reset(this.revealed.reset())
           return this.rereads--
         }
 
@@ -69,6 +64,18 @@
       emit(card) {
         this.$emit('clicked', this.revealed, card)
       },
+    },
+
+    watch: {
+      init() {
+        if (this.loaded) {
+          return
+        }
+
+        this.loaded = true
+
+        this.deck = new Deck(this.init)
+      }
     }
   })
 </script>
