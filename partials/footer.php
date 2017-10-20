@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer col-md-12">
   <div>
     This is a university project for course&nbsp;<b>CSD 2550</b>.
   </div>

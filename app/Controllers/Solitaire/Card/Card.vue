@@ -6,17 +6,17 @@
       flipped: card.hidden
     }">
     <div class="flex-row">
-      <div>{{ Suits[card.suit] }} {{ card.value() }}</div>
-      <div class="text-right">{{ Suits[card.suit] }} {{ card.value() }}</div>
+      <span>{{ Suits[card.suit] }} {{ card.value() }}</span>
+      <span class="text-right">{{ Suits[card.suit] }} {{ card.value() }}</span>
     </div>
 
     <div class="flex-row big optional">
-        <div>{{ Suits[card.suit] }} {{ card.value() }}</div>
+        <span>{{ Suits[card.suit] }} {{ card.value() }}</span>
     </div>
 
     <div class="flex-row optional">
-      <div>{{ Suits[card.suit] }} {{ card.value() }}</div>
-      <div class="text-right">{{ Suits[card.suit] }} {{ card.value() }}</div>
+      <span>{{ Suits[card.suit] }} {{ card.value() }}</span>
+      <span class="text-right">{{ Suits[card.suit] }} {{ card.value() }}</span>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@
   Vue.component('card', {
     template: '#card-template',
     /**
-     * @prop card   Card object to render.
+     * @prop card Card object to render.
      */
     props: ['card']
   })

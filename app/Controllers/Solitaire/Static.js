@@ -24,10 +24,20 @@ Fresh = () => {
   return _.shuffle(deck)
 }
 
+/**
+ * Croupier object handles tedious operations that can be excluded from
+ * Game.vue file.
+ */
 Croupier = {
   cards: Fresh(),
 
+  /**
+   * Generates a multidimensional array of Card objects.
+   *
+   * @return Array(7)
+   */
   piles() {
+    console.log(this.cards)
     let cards = this.cards.splice(0, 28).map((card) => {
       return new Card(card.val, card.suit, true)
     })
@@ -43,21 +53,29 @@ Croupier = {
     ]
   },
 
+  /**
+   * Generating predefined registers for a new game.
+   *
+   * @return object with parameters used for loading Cards into registers.
+   */
   deal() {
     let cards = Fresh()
 
     return {
       piles: this.piles(),
-      flushes: [
-        [],
-        [],
-        [],
-        []
-      ],
+      flushes: new Array(4).fill([]),
       deck: this.cards
     }
   },
 
+  /**
+   * Parses Vue.js main objects children into arrays of Card objects that
+   * can be stored in localstorage.
+   *
+   * @param Array of Vue objects.
+   *
+   * @return object with parameters used for loading Cards into registers.
+   */
   parse(registers) {
     let deck = registers[1].revealed.cards.concat(registers[1].deck.cards)
 

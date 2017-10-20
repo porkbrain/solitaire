@@ -1,27 +1,24 @@
 @import "_variables";
+/**
+ * Styles for the Solitaire game itself.
+ *
+ * These were tested on Chrome v61.0 only, but I suppose it is responsive
+ * and everything should work on latest versions of other browsers as well.
+ * The only issue I can imagine would be card suits icons as they might be
+ * rendered differently, because they don't fall under the Cairo font.
+ */
 
 .game {
   overflow: auto;
-  width: 1600px;
+  width: 100%;
+  max-width: 1600px;
   height: 110vh;
   margin: auto;
 
-  .alert {
-    position: absolute;
-    width: 1600px;
-    height: 110vh;
-    text-align: center;
-    font-size: 25px;
-
-    p {
-      padding-top: 150px;
-    }
-  }
-
-  .flex-row {
-    display: flex;
-    width: 100%;
-  }
+  /**
+   * Defining the skelet of game.
+   *
+   */
 
   .deck {
     flex: 3;
@@ -29,6 +26,20 @@
 
   .flush {
     flex: 4;
+  }
+
+  .flex-row {
+    display: flex;
+    width: 100%;
+  }
+
+  .register {
+    flex: 1;
+    border: 2px solid $link;
+    border-radius: $radius;
+    box-sizing: border-box;
+    margin: 5px 10px;
+    height: 300px;
   }
 
   .deck, .flush {
@@ -43,7 +54,7 @@
       }
     }
 
-    .pile {
+    .register {
       overflow: hidden;
       .card {
         display: none;
@@ -57,43 +68,39 @@
     }
   }
 
-  .piles {
-    .card {
-      max-height: 300px;
-      height: $card-header;
-      box-sizing: border-box;
+  /**
+   * Card stacking effect is only desired for bottom 7 piles.
+   */
+  .piles .card {
+    max-height: 300px;
+    height: $card-header;
+    box-sizing: border-box;
+
+    .optional {
+      display: none;
+    }
+
+    &:first-child {
+      border-top-right-radius: $radius;
+      border-top-left-radius: $radius;
+    }
+
+    &:last-child {
+      height: 100%;
+      border-bottom-right-radius: $radius;
+      border-bottom-left-radius: $radius;
 
       .optional {
-        display: none;
-      }
-
-      &:first-child {
-        border-top-right-radius: $radius;
-        border-top-left-radius: $radius;
-      }
-
-      &:last-child {
-        height: 100%;
-        border-bottom-right-radius: $radius;
-        border-bottom-left-radius: $radius;
-
-        .optional {
-          display: block;
-        }
+        display: flex;
       }
     }
   }
 
-  .pile {
-    flex: 1;
-    border: 2px solid $link;
-    border-radius: $radius;
-    box-sizing: border-box;
-    margin: 5px 10px;
-    height: 300px;
-  }
-
+  /**
+   * Overall card styling that is same for every card.
+   */
   .card {
+    overflow: hidden;
     background-color: white;
     cursor: pointer;
 
@@ -102,7 +109,7 @@
     }
 
     &.flipped {
-      background-image: url("https://www.transparenttextures.com/patterns/argyle.png");
+      background-image: url("../../img/flipped_bg.png");
       background-color: $dark;
 
       .flex-row {
@@ -110,6 +117,7 @@
       }
     }
 
+    // There are 3 flex-rows in each card.
     .flex-row {
       flex: 1;
       height: 33%;
@@ -121,15 +129,31 @@
       &.big {
         text-align: center;
         font-weight: bold;
-        font-size: 60px;
-        align-items: center;
+        font-size: 45px;
       }
 
-      div {
+      span {
         width: 100%;
         padding: 10px;
         font-size: 140%;
       }
     }
   }
+
+    /**
+     * Alert box that covers whole game screen. It is kind of hard coded.
+     * TODO: Make alert box smaller, remove absolute position and make
+     *       the game not render via Vue.js if alert is shown.
+     */
+    .alert {
+      position: absolute;
+      width: 1600px;
+      height: 110vh;
+      text-align: center;
+      font-size: 25px;
+
+      p {
+        padding-top: 150px;
+      }
+    }
 }

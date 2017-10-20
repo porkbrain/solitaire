@@ -12,15 +12,7 @@
     template: '#auth-template',
     data() {
       return {
-        logged: false
-      }
-    },
-
-    mounted() {
-      let pointer = db.users.getPointer()
-
-      if (pointer) {
-        this.logged = pointer
+        logged: db.users.getPointer()
       }
     }
   })

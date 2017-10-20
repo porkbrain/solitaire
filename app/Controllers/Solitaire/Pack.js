@@ -2,6 +2,7 @@
  * Parent class for all register stacks. In code children instances of Pack
  * are referred to as stack. It is important that this class is always loaded
  * before Registers directory in Blader otherwise whole app crashes.
+ *
  */
 class Pack {
   constructor() {

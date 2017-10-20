@@ -40,21 +40,30 @@
       }
     },
 
+    /**
+     * TODO: Mounted method should be outside of Game.vue and just pass
+     *  it's result via props.
+     */
     mounted() {
       let game = db.games.getPointer()
 
+      // If there's no current game played, creates new one.
       if (game === null) {
         return this.newGame()
       }
 
       this.init(game)
 
+      // Starts interval for decrementing score each second.
       this.interval = setInterval(() => {
         this.time++
       }, 1000)
     },
 
     methods: {
+      /**
+       * Creates a fresh game info and reloads the window.
+       */
       newGame() {
         db.games.setPointer({
           stacks: Croupier.deal(),
@@ -66,11 +75,21 @@
         return location.reload()
       },
 
+      /**
+       * Loads game info into Vue object.
+       *
+       * @param game Object with following properties:
+       *               clicks Int
+       *               rereads Int
+       *               time Int
+       *               stacks Storage of cards..
+       */
       init(game) {
         this.clicks = game.clicks
         this.$children[1].rereads = game.rereads
         this.time = game.time
-        
+
+        // Function that inits all cards as Card objects.
         let parseStack = (stack) => {
           return stack.map((card) => {
             return new Card(card.val, card.suit, card.hidden)
@@ -84,9 +103,21 @@
         }
       },
 
-      push(stack, card = null) {
+      /**
+       * TODO: Exlude sideeffects from validating function.
+       *
+       * @param stack, card See this.push().
+       *
+       * @return Bool that's true if the card can be pushed onto the stack.
+       */
+      validate(stack, card) {
         // If card argument is empty then disactivate all cards.
         if (card === null && this.active.card === null) {
+          return this.activate(null)
+        }
+
+        // Player shouldn't be able to move with hidden cards.
+        if (card !== null && card.hidden) {
           return this.activate(null)
         }
 
@@ -96,6 +127,22 @@
          */
         if (this.active.card === null || ! stack.validate(this.active.card)) {
           return this.activate(stack, card)
+        }
+
+        return true
+      },
+
+      /**
+       * Core method for moving cards. Is called by emited events in children.
+       * If there's no active card, marks clicked card as active. Otherwise
+       * validates if active card can be moved onto clicked card.
+       *
+       * @param stack Register that's been clicked on.
+       * @param card Card that has been clicked on.
+       */
+      push(stack, card = null) {
+        if (! this.validate(stack, card)) {
+          return
         }
 
         // Otherwise put the active card and all above it onto the clicked stack.
@@ -121,6 +168,8 @@
        *
        * @param stack A stack that the Card object belongs to.
        * @param card  Particular Card object from stack that has been selected.
+       *
+       * @return Bool false
        */
       activate(stack, card = null) {
         // Setting the background texture.
@@ -133,6 +182,8 @@
         }
 
         this.active = {stack: stack, card: card}
+
+        return false
       },
 
       /**
@@ -152,6 +203,9 @@
         this.won = true
       },
 
+      /**
+       * Saves current game into localstorage as a pointer of games collection.
+       */
       save() {
         db.games.setPointer({
           stacks: Croupier.parse(this.$children),

@@ -1,14 +1,14 @@
 <template id="deck-template">
   <div class="deck flex-row">
-    <div class="pile" @click="deal">
+    <div class="register" @click="deal">
       <div v-if="! deck.empty()" class="card flipped"></div>
     </div>
-    <div class="pile">
+    <div class="register">
       <card v-for="card in revealed.cards"
-        v-on:click.native="emit(card)"
+        v-on:click.native="clicked(card)"
         v-bind:card="card"></card>
     </div>
-    <div class="pile info">
+    <div class="register info">
       <div>redeals left:&nbsp;<b>{{ rereads }}</b></div>
       <div>score:&nbsp;<b>{{ score }}</b></div>
       <div><button @click="$emit('newgame')">New game</button></div>
@@ -18,6 +18,10 @@
 <script type="text/javascript">
   Vue.component('deck', {
     template: '#deck-template',
+    /**
+     * @prop init Array of cards for Deck register constructor.
+     * @prop score Score info that gets rendered in info class.
+     */
     props: ['init', 'score'],
     data() {
       return {
@@ -30,11 +34,19 @@
     },
 
     methods: {
+      /**
+       * Draws another card from deck.
+       */
       deal() {
         if (this.disable) {
           return
         }
 
+        /*
+         * If the deck is empty and player still has rereads, cards from
+         * revealed register get put back into Deck register so that player can
+         * draw them all again.
+         */
         if (this.deck.empty()) {
           if (this.rereads === 0) {
             return
@@ -48,11 +60,16 @@
 
         this.revealed.push(card)
 
-        this.emit(null)
+        // Clears active cards and disables drawing for 350 ms.
+        this.clicked(null)
 
         this.disableDeal()
       },
 
+      /**
+       * Prevents double click mistakes by setting some minimal time before
+       * drawing another card.
+       */
       disableDeal() {
         this.disable = true
 
@@ -61,11 +78,18 @@
         }, 350)
       },
 
-      emit(card) {
+      /**
+       * @param card Card object to be put onto revealed register.
+       */
+      clicked(card) {
         this.$emit('clicked', this.revealed, card)
       },
     },
 
+    /**
+     * TODO: Refactor the way all cards get loaded into Deck register as this
+     *       is very poor and sticker-plaster-like solution.
+     */
     watch: {
       init() {
         if (this.loaded) {

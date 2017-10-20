@@ -1,12 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Cairo:300,400,700);
-/** General form elements styling. */
-input, button, textarea { outline: none; border-radius: 10px; }
-
-input, textarea { border: 1px solid #3097d1; padding: 10px; color: #2c3e50; background-color: #c7dcfa; width: 100%; }
-
-button { padding: 12px 17px; background-color: #2c3e50; color: #dae8fc; font-size: 20px; }
-
-body { height: 100vh; width: 100%; display: flex; flex-wrap: wrap; font-family: Cairo, sans-serif; color: #2c3e50; background-color: #dae8fc; user-select: none; }
+body { padding: 0; margin: 0; height: 100vh; width: 100%; min-width: 1525px; display: flex; flex-wrap: wrap; font-family: Cairo, sans-serif; color: #2c3e50; background-color: #dae8fc; user-select: none; }
 
 /** Universal helpers. */
 .text-left { text-align: left; }
@@ -27,7 +20,15 @@ body { height: 100vh; width: 100%; display: flex; flex-wrap: wrap; font-family: 
 
 .black { color: black; }
 
+/** General form elements styling. */
+input, button, textarea { outline: none; border-radius: 10px; }
+
+input, textarea { border: 1px solid #3097d1; padding: 10px; color: #2c3e50; background-color: #c7dcfa; width: 100%; }
+
+button { padding: 12px 17px; background-color: #2c3e50; color: #dae8fc; font-size: 20px; }
+
 /** All files are merged to one and minified for better performance, as in HTTP 1.0 it's faster to load one larger file than multiple small one. This is going to change with HTTP 2.0, but this application runs on 1.0. */
+/** Simple navigation split into 4 blocks with flex. The last one, login, is positioned to the right. */
 .nav { width: 100%; align-self: flex-start; margin-top: 8px; display: flex; }
 
 .nav div { flex: 1; }

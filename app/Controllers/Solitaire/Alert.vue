@@ -24,6 +24,10 @@
 <script type="text/javascript">
   Vue.component('alert', {
     template: '#alert-template',
-    props: ['won', 'score']    
+    /**
+     * @prop won Bool if the game is won.
+     * @prop score Integer with amount of points obtaint.
+     */
+    props: ['won', 'score']
   })
 </script>

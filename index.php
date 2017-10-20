@@ -5,12 +5,12 @@
  * @author Michael Bausano
  *
  * @note
- *  I believe that most of the code is very self-explanatory. Most of
+ *  I believe that most of the code is self-explanatory. Most of
  *  the comments across the code are redundant and I wouldn't include them in
  *  real life. However as this app is for educational purposes, I thought it
  *  would be helpful to comment as much as possible. There are reasons
- *  why I don't believe in code commenting (besides method signatures) and if
- *  you're interested I'd love to discuss them sometimes.
+ *  why I don't believe in code over commenting (besides method signatures)
+ *   and if you're interested I'd love to discuss them sometimes.
  */
 
 require 'Router.php';

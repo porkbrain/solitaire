@@ -1,3 +1,8 @@
+/**
+ * The footer is poorly designed as I failed at using flex box correctly.
+ * In some browsers it's not possitioned at the very bottom of the page.
+ * This is due to pretty bad vertical align support in CSS.
+ */
 .footer {
   align-self: flex-end;
   width: 100%;

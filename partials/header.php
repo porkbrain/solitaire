@@ -1,4 +1,4 @@
-<div class="nav">
+<div class="nav col-md-12">
   <div>
     <a href="/">solitaire</a>
   </div>

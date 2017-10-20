@@ -1,7 +1,6 @@
 <template id="login-template">
   <div class="left">
     <h1>Login</h1>
-
     <form @submit.prevent.self>
       <div class="line">
         <input type="text"
@@ -17,7 +16,6 @@
       </div>
       <div class="line text-left">
         <button @click="login">Login</button>
-          <!-- TODO: Add a forgot your password email validation. -->
         <a href="#" class="note">Forgot your password?</a>
       </div>
     </form>
@@ -31,7 +29,6 @@
       return {
         name: '',
         password: '',
-
         error: false
       }
     },
@@ -47,6 +44,7 @@
           return this.error = true
         }
 
+        // Pointer in users collection holds currently logged user.
         db.users.setPointer(users[0].name)
 
         location.reload()

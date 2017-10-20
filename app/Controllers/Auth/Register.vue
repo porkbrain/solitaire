@@ -1,7 +1,6 @@
 <template id="register-template">
   <div class="right">
     <h1>Register</h1>
-
     <form @submit.prevent.self>
       <div class="line">
         <input type="text" placeholder="Your e-mail" v-model="email">
@@ -31,7 +30,6 @@
         email: '',
         name: '',
         password: '',
-
         confirm: '',
         error: ''
       }
@@ -42,7 +40,7 @@
        * If the form data is valid, adds a user to collection and loggs him in.
        */
       register() {
-        if (this.validate() !== true) {
+        if (! this.validate()) {
           return
         }
 
@@ -57,30 +55,39 @@
         location.reload()
       },
 
+      /**
+       * @return Bool True if form is valid, false otherwise.
+       */
       validate() {
-        let regex = /[a-zA-Z1-9]+@[a-zA-Z]+\.[a-zA-Z]+/i
+        let emailRegex = /[a-zA-Z1-9]+@[a-zA-Z]+\.[a-zA-Z]+/i
 
-        if (this.email.match(regex) === null) {
-          return this.error = 'Enter a valid e-mail adress!'
+        if (this.email.match(emailRegex) === null) {
+          return this.err('Enter a valid e-mail adress!')
         }
 
         if (this.name.length === 0) {
-          return this.error = 'Your nick can\' be empty!'
+          return this.err('Your nick can\' be empty!')
         }
 
         if (this.password.length < 4) {
-          return this.error = 'Your password is too short!'
+          return this.err('Your password is too short!')
         }
 
         if (this.password !== this.confirm) {
-          return this.error = 'Your passwords don\'t match!'
+          return this.err('Your passwords don\'t match!')
         }
 
         if (! db.users.unique('name', this.name)) {
-          return this.error = 'This username is already in use!'
+          return this.err('This username is already in use!')
         }
 
         return true
+      },
+
+      err(string) {
+        this.error = string
+
+        return false
       }
     }
   })
