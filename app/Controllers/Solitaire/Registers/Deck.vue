@@ -11,7 +11,7 @@
     <div class="register info">
       <div>redeals left:&nbsp;<b>{{ rereads }}</b></div>
       <div>score:&nbsp;<b>{{ score }}</b></div>
-      <div><button @click="$emit('newgame')">New game</button></div>
+      <div><button @click="$emit('newgame')">new game</button></div>
   </div>
 </template>
 
